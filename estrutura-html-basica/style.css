@@ -1,0 +1,18 @@
+body {
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding: 50px;
+    font-family: Arial, sans-serif;
+    background-color: #252525;
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: center;
+}
+
+h1, p {
+    color: #fff;
+}

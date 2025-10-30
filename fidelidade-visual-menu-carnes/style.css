@@ -1,0 +1,50 @@
+    body {
+        /* reset da pagina */
+        margin: 0 auto;
+        padding: 0;
+        /* para que a largura e altura definidas para um elemento incluam o preenchimento */
+        box-sizing: border-box;
+        /* definição da fonte do site */
+        font-family: Arial, sans-serif;
+        background-color: #f3e3d3;
+    }
+
+    header {
+        /* definição do espaço interno entre o elemento e a borda */
+        padding: 8px;
+        /* cor de fundo do cabeçalho */
+        background-color: #6a5a52;
+    }
+
+    h1 {
+        /* definição da cor do titulo */
+        color: #fff;
+        /* alinhamento do texto no centro (horizontalmente) */
+        text-align: center;
+        /* para empurrar o titulo para mais perto da extremidade de cima (verticalmente) */
+        margin-top: 2px;
+    }
+
+    .container {
+        /* ativação do flexbox no atributo com classe*/
+        display: flex;
+        /* destribuição dos elementos verticalmente*/
+        flex-direction: row;
+        /* centralização dos itens */
+        justify-content: center;
+        /* espaçamento entre os itens */
+        gap: 4px;
+        /* reduzação do espaço entre o cabeçalho e o main */
+        margin-top: -20px;
+    }
+
+    p {
+        /* ajuste no tamanho da fonte */
+        font-size: 20px;
+        /* definição do espaço interno entre o elemento e a borda - altura + largura */
+        padding: 12px 8px;
+        /* definição da borda */
+        border: solid 11px #6a5a52;
+        /* definição do texto em negrito */
+        font-weight: bold;
+    }
