@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const nmin = 1;
+        const nmax = 100;
+
+        let numAleatorio = Math.floor(Math.random() * (nmax - nmin + 1)) + nmin;
+
+        let numeroUser = Number(prompt("Acerte o numero sorteado:"));
+
+        while (numAleatorio !== numeroUser) {
+            if (numAleatorio > numeroUser) {
+                alert(`Você errou! Chute um valor mais alto.`);
+            } else if (numAleatorio < numeroUser) {
+                alert(`Você errou! Chute um valor mais baixo.`);
+            } 
+
+            numeroUser = Number(prompt("Tente novamente:"));
+        }
+
+        alert(`Parabéns, você acertou! O número era ${numAleatorio}.`);
+
+    </script>
+</body>
+
+</html>

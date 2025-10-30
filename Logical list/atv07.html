@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let num1 = Number(prompt("Digite o primeiro numero:"));
+        let num2 = Number(prompt("Digite o segundo numero:"));
+        
+        let resultado = 0;
+        let operacao = prompt("Digite o numero referente a operação escolhida: 1- Adição | 2- Subtração | 3- Multiplicação | 4- Divisão");
+        
+        if (operacao == "1"){
+            somar();
+        } else if (operacao == "2"){
+            subtrair();
+        } else if (operacao == "3"){
+            multiplicar();
+        } else if (operacao == "4"){
+            dividir();
+        } else {
+            alert("operação invalida")
+        }
+
+        function debugar(){
+            console.log(resultado)
+        }
+
+        function somar(){
+            resultado = num1 + num2
+            debugar();
+        }
+
+        function subtrair(){
+            resultado = num1 - num2
+            debugar();
+        }
+
+        function multiplicar(){
+            resultado = num1 * num2
+            debugar();
+        }
+
+        function dividir(){
+            resultado = num1 / num2
+            debugar();
+        }
+    </script>
+</body>
+
+</html>

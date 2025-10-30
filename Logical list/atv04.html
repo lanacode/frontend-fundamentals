@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let nota1 = Number(prompt("Digite a nota da primeira avaliação:"));
+        let nota2 = Number(prompt("Digite a nota da segunda avaliação:"));
+        let nota3 = Number(prompt("Digite a nota da terceira avaliação:"));
+
+        let totalDePontos = (nota1+nota2+nota3)/3;
+        let situacao = '';
+
+        if(totalDePontos >= 7){
+            situacao = "aprovado"
+        } else {
+            situacao = "reprovado"
+        };
+
+        alert(`Sua media é ${totalDePontos}. Você foi ${situacao}`);
+
+    </script>
+</body>
+
+</html>
