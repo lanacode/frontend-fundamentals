@@ -1,0 +1,157 @@
+:root {
+    --verde: #00ca4e;
+    --amarelo: #ffbd44;
+    --vermelho: #ff605c;
+    --branco: #fff;
+}
+
+* {
+    margin: 0 auto;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    color: var(--branco);
+}
+
+.janela-container {
+    width: 480px;
+    height: auto;
+    margin: 0 auto;
+    background-color: #011522;
+    border-radius: 8px;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.barra-ferramentas {
+    display: flex;
+    align-items: center;
+    padding: 9px;
+}
+
+.botoes-janela {
+    display: flex;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.botoes-janela li {
+    padding: 0 4px;
+}
+
+.botao-janela {
+    display: block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.fechar {
+    background-color: var(--vermelho);
+}
+
+.minimizar {
+    background-color: var(--amarelo);
+}
+
+.maximizar {
+    background-color: var(--verde);
+}
+
+.conteudo-janela {
+    display: flex;
+    height: 60%;
+    padding: 15px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.conteudo-janela header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.conteudo-janela header h1 {
+    font-size: 1.5em;
+}
+
+.conteudo-janela header p {
+    margin-top: 20px;
+    padding: 20px;
+    color: #000;
+    background-color: var(--branco);
+    border-radius: 20px;
+}
+
+/* Classe de controle de visibilidade (já existente, mas reforçada) */
+.oculto {
+    display: none !important;
+}
+
+/* Estilização básica dos botões e campos */
+#secao-dicas,
+#secao-historico {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.campo-entrada {
+    padding: 8px;
+    border: 1px solid #334455;
+    border-radius: 4px;
+    background-color: #012030;
+    color: var(--branco);
+    width: 65%;
+    margin-right: 5px;
+}
+
+.botao-acao,
+.botao-novo-jogo {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+
+.botao-acao {
+    /* Botão Adivinhar */
+    background-color: var(--verde);
+    color: #011522;
+}
+
+.botao-novo-jogo {
+    background-color: var(--amarelo);
+    color: #011522;
+    margin-top: 15px;
+}
+
+.lista-palpites {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    list-style: none;
+    padding: 0;
+    margin-top: 5px;
+}
+
+.titulo-historico {
+    font-weight: normal;
+    margin-top: 15px;
+}
+
+#secao-controles,
+#secao-historico,
+#secao-novo-jogo {
+    display: none;
+}

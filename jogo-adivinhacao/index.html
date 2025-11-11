@@ -4,144 +4,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Jogo de Adivinhação | Ilana Nascimento</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    <header>
-        <h1>Jogo de Adivinhação</h1>
-        <p>Tente adivinhar o número secreto (entre 1 e 100).</p>
-    </header>
-    <main>
-        <section id="secao-dicas">
-            <h3 id="dica">Digite um palpite até acertar.</h3>
-        </section>
-        <section id="secao-controles">
-            <input type="number" id="campo-palpite" placeholder="Digite seu palpite" class="campo-entrada">
-
-            <button id="botao-palpitar" class="botao-acao">
-                Adivinhar
-            </button>
-        </section>
-
-        <button id="botao-novo-jogo" class="botao-novo-jogo oculto">
-            Novo Jogo
-        </button>
-
-        <section id="secao-historico">
-            <h5 class="titulo-historico">Tentativas (<span id="contador-tentativas">0</span>):</h5>
-            <ul id="lista-palpites" class="lista-palpites">
-                <li class="item-palpite item-oculto">t1</li>
-                <li class="item-palpite item-oculto">t2</li>
-                <li class="item-palpite item-oculto">t3</li>
+    <figure class="janela-container">
+        <nav class="barra-ferramentas">
+            <ul class="botoes-janela">
+                <li><span class="botao-janela fechar"></span></li>
+                <li><span class="botao-janela minimizar"></span></li>
+                <li><span class="botao-janela maximizar"></span></li>
             </ul>
+        </nav>
+        <section class="conteudo-janela">
+            <header>
+                <h1>Jogo de Adivinhação</h1>
+                <p>Tente adivinhar o número secreto (entre 1 e 100).</p>
+            </header>
+            <main>
+                <section id="secao-dicas">
+                    <h3 id="dica">Digite um palpite até acertar.</h3>
+                    <button id="botao-comecar" class="botao-novo-jogo">Começar</button>
+                </section>
+
+                <section id="secao-controles">
+                    <form action="">
+                        <input type="number" id="campo-palpite" placeholder="Digite seu palpite" class="campo-entrada">
+                        <button id="botao-palpitar" class="botao-acao">Adivinhar</button>
+                    </form>
+                </section>
+
+                <section id="secao-historico">
+                    <h5 class="titulo-historico">Tentativas (<span id="contador-tentativas">0</span>):</h5>
+                    <ul id="lista-palpites" class="lista-palpites">
+                    </ul>
+                </section>
+
+                <section id="secao-novo-jogo">
+                    <button id="botao-novo-jogo" class="botao-novo-jogo oculto">Novo Jogo</button>
+                </section>
+
+            </main>
+            <footer>
+                <p>&copy; Jogo de Adivinhação | Ilana Nascimento</p>
+            </footer>
         </section>
-    </main>
-    <script>
-        // --- Referências do DOM ---
-        const campoPalpite = document.getElementById("campo-palpite");
-        const botaoPalpitar = document.getElementById("botao-palpitar");
-        const botaoNovoJogo = document.getElementById("botao-novo-jogo");
-        const elementoDica = document.getElementById("dica");
-        const secaoDicas = document.getElementById("secao-dicas");
-        const contadorTentativas = document.getElementById("contador-tentativas");
-        const listaPalpites = document.getElementById("lista-palpites");
+    </figure>
 
-        // --- Variáveis de Estado (Mínimo) ---
-        let numeroSorteado;
-        let tentativas;
-        let isGameOver;
-        const N_MIN = 1;
-        const N_MAX = 100;
-
-        // Função Única para Lógica de Checagem
-        function checarPalpite() {
-            if (isGameOver) return;
-
-            const palpiteTexto = campoPalpite.value;
-            const palpite = parseInt(palpiteTexto);
-
-            // 1. Validação
-            if (isNaN(palpite) || palpite < N_MIN || palpite > N_MAX) {
-                elementoDica.textContent = `Insira um número válido entre ${N_MIN} e ${N_MAX}.`;
-                secaoDicas.className = '';
-                return;
-            }
-
-            // 2. Atualiza Tentativas e Histórico
-            tentativas++;
-            contadorTentativas.textContent = tentativas;
-
-            const item = document.createElement('li');
-            item.textContent = palpite;
-            item.className = 'item-palpite';
-            listaPalpites.appendChild(item);
-
-            campoPalpite.value = '';
-            campoPalpite.focus();
-
-            // 3. Lógica de Comparação
-            if (palpite === numeroSorteado) {
-                // Acertou
-                isGameOver = true;
-                elementoDica.textContent = `🥳 ACERTOU! O número era ${numeroSorteado} em ${tentativas} tentativas!`;
-                secaoDicas.className = 'dica-acerto';
-
-                // Desabilita e Mostra Novo Jogo
-                campoPalpite.disabled = true;
-                botaoPalpitar.disabled = true;
-                botaoNovoJogo.classList.remove('oculto');
-
-            } else if (numeroSorteado > palpite) {
-                // Muito BAIXO
-                elementoDica.textContent = 'Seu palpite está muito BAIXO. Tente um número MAIOR.';
-                secaoDicas.className = 'dica-baixa';
-            } else {
-                // Muito ALTO
-                elementoDica.textContent = 'Seu palpite está muito ALTO. Tente um número MENOR.';
-                secaoDicas.className = 'dica-alta';
-            }
-        }
-
-        // Função Única para Iniciar/Reiniciar o Jogo
-        function iniciarJogo() {
-            // Gera o novo número secreto e reseta o estado
-            numeroSorteado = Math.floor(Math.random() * (N_MAX - N_MIN + 1)) + N_MIN;
-            tentativas = 0;
-            isGameOver = false;
-
-            // Reseta a UI
-            elementoDica.textContent = 'Digite um palpite até acertar.';
-            secaoDicas.className = '';
-            contadorTentativas.textContent = '0';
-            listaPalpites.innerHTML = '';
-            campoPalpite.value = '';
-
-            // Habilita/Desabilita Controles
-            campoPalpite.disabled = false;
-            botaoPalpitar.disabled = false;
-            botaoNovoJogo.classList.add('oculto');
-        }
-
-        // --- Event Listeners (Ligação Simples) ---
-
-        // Liga o botão Adivinhar à função de checagem
-        botaoPalpitar.addEventListener('click', checarPalpite);
-
-        // Liga o botão Novo Jogo à função de reinício
-        botaoNovoJogo.addEventListener('click', iniciarJogo);
-
-        // Liga a tecla Enter no input à função de checagem
-        campoPalpite.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                checarPalpite();
-            }
-        });
-
-        // Inicia o jogo ao carregar
-        window.onload = iniciarJogo;
-    </script>
-
+<script src="scripts.js"></script>
 </body>
 
 </html>
